@@ -81,7 +81,7 @@
   height: 70px;
   width: 230px;
   transition: all var(--transition-normal);
-  overflow: visible; /* Resmin kesilmesini önler */
+  overflow: hidden; /* Resmin kendi beyaz boşluklarını gizler */
 }
 
 .navbar.scrolled .logo-link {
@@ -94,7 +94,7 @@
   height: 100%;
   object-fit: contain;
   transform: scale(1.7); /* Zoom biraz düşürüldü ki kenarlardan taşmasın */
-  transform-origin: left center; /* Büyürken sola ve ortaya sabit kalsın */
+  transform-origin: center center; /* Her yönden eşit kırpar */
   mix-blend-mode: multiply; 
   filter: brightness(1.02) contrast(1.1); 
   transition: all var(--transition-normal);
