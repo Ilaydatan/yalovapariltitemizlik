@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# React gibi Tek Sayfa Uygulamaları (SPA) için gerekli yönlendirme ayarı
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
