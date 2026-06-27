@@ -1,0 +1,225 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0;
+  background: var(--color-surface); /* Saf beyaz arka plan, logo ile mükemmel kaynaşır */
+  z-index: 1000;
+  transition: all var(--transition-normal);
+  border-bottom: 1px solid rgba(0,0,0,0.03);
+}
+
+.navbar.scrolled {
+  box-shadow: var(--shadow-sm);
+}
+
+/* Topbar Styles */
+.topbar {
+  background: var(--gradient-dark); /* Kırmızı Gradient */
+  color: var(--color-primary-light); /* Altın Metin */
+  padding: 0.5rem 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid rgba(199, 160, 82, 0.2);
+  transition: all var(--transition-normal);
+}
+
+.navbar.scrolled .topbar {
+  height: 0;
+  padding: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.topbar-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.topbar-contact {
+  display: flex;
+  gap: 2rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color var(--transition-fast);
+}
+
+.contact-item:hover {
+  color: #fff;
+}
+
+.contact-icon {
+  font-size: 1rem;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  transition: padding var(--transition-normal);
+}
+
+.navbar.scrolled .navbar-container {
+  padding: 0.5rem 2rem;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  height: 85px; /* Navbar'ı bir tık daha ferah tutar */
+  width: 280px; /* Logoya biraz daha alan açar */
+  transition: all var(--transition-normal);
+  overflow: hidden; /* Resmin dışarı taşan kutusunu gizler */
+}
+
+.navbar.scrolled .logo-link {
+  height: 70px; 
+  width: 240px;
+}
+
+.brand-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: scale(1.9); /* %190 zoom ile bir tık daha büyütüldü */
+  mix-blend-mode: multiply; /* Arka planı şeffaflaştırır */
+  filter: brightness(1.02) contrast(1.1); /* Beyazı patlatarak kaynaştırır */
+  transition: all var(--transition-normal);
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.navbar-links a:not(.nav-cta) {
+  font-family: var(--font-family-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  position: relative;
+  transition: color var(--transition-fast);
+}
+
+.navbar-links a:not(.nav-cta):hover {
+  color: var(--color-primary-dark);
+}
+
+.navbar-links a:not(.nav-cta)::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-dark));
+  transition: width var(--transition-normal);
+  border-radius: 2px;
+}
+
+.navbar-links a:not(.nav-cta):hover::after {
+  width: 100%;
+}
+
+.nav-cta {
+  padding: 0.75rem 1.8rem;
+  font-size: 0.9rem;
+}
+
+.mobile-toggle {
+  display: none;
+  cursor: pointer;
+}
+
+.hamburger {
+  width: 30px;
+  height: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-text-main);
+  transition: all var(--transition-fast);
+  border-radius: 2px;
+}
+
+@media (max-width: 992px) {
+  .navbar-links {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .d-none-mobile {
+    display: none !important;
+  }
+  
+  .topbar-container {
+    justify-content: center;
+  }
+  
+  .topbar-contact {
+    gap: 1rem;
+    font-size: 0.75rem;
+  }
+
+  .logo-link {
+    width: 120px;
+    height: 60px;
+  }
+
+  .mobile-toggle {
+    display: block;
+    z-index: 1001;
+  }
+
+  .navbar-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    max-width: 400px;
+    height: 100vh;
+    background-color: var(--color-surface);
+    flex-direction: column;
+    justify-content: center;
+    gap: 3rem;
+    box-shadow: var(--shadow-premium);
+    transition: right var(--transition-normal);
+  }
+
+  .navbar-links.active {
+    right: 0;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+  
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+}
